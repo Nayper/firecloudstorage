@@ -1,0 +1,24 @@
+{
+    "Hello": "Hello",
+    "Username": "Username",
+    "Email": "E-mail",
+    "Password": "Password",
+    "Login": "Log in",
+    "Register": "Register",
+    "Logout" : "Logout",
+    "Files" : "Files",
+    "CreateFolder" : "Create folder",
+    "CreateFile" : "Add file",
+    "Download": "Download",
+    "Delete": "Delete", 
+
+    "Valid_invalidUsername" : "Username must be at least 3 characters long.",
+    "Valid_invalidEmail" : "Invalid email address.",
+    "Valid_invalidPassword" : "Password must be at least 8 characters long."
+
+    
+
+    
+
+
+}

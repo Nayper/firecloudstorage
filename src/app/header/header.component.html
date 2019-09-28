@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" class="app-header">
+    <div style="text-decoration:none;color:#ffffff;">Fire Cloud Storage<span style="color:orange; font-size: 12px;">  by Piotr Nippe</span></div>
+    <div>
+        <span class="nav-tool-items">
+            <span *ngIf="!currentUser;else other_content">
+                <a mat-button routerLink="login" routerLinkActive="active">{{ 'Login' | translate }}</a>
+                <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">{{ 'Register' | translate }}</a>
+            </span>
+            <ng-template #other_content>
+                <span style="margin-right:17px;">
+                    <span class="mat-body">{{ 'Hello' | translate }}, </span><span style="font-size: 19px;" class="mat-body-strong">{{currentUser["displayName"]}}</span>
+                </span>
+                <a mat-button mat-raised-button (click)="logout()">{{ 'Logout' | translate }}</a>
+            </ng-template>
+            <mat-button-toggle-group [value]="selectedValue" class="button-group">
+                <mat-button-toggle value="en" (change)="changeLanguage($event)">EN</mat-button-toggle>
+                <mat-button-toggle value="pl" (change)="changeLanguage($event)">PL</mat-button-toggle>
+            </mat-button-toggle-group>
+        </span>
+    </div>
+</mat-toolbar>

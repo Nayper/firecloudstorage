@@ -1,0 +1,39 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>{{ 'Register' | translate }}</mat-card-title>
+        </mat-card-header>
+
+        <form class="example-form" [formGroup]="registerForm" novalidate (ngSubmit)="onSubmit()">
+
+            <mat-card-content>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="{{ 'Username' | translate }}" formControlName="username" required>
+                    <div *ngIf="showUsernameValidation && registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)">
+                            <br><div class="alert alert-danger error-message">{{ 'Valid_invalidUsername' | translate }}</div>
+                        </div>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="{{ 'Email' | translate }}" formControlName="email" required>
+                    <div *ngIf="showEmailValidation && registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+                            <br><div class="alert alert-danger error-message">{{ 'Valid_invalidEmail' | translate }}</div>
+                        </div>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input type="password" matInput placeholder="{{ 'Password' | translate }}" formControlName="password" required>
+                    <div *ngIf="showPassValidation && registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
+                        <br><div class="alert alert-danger error-message">{{ 'Valid_invalidPassword' | translate }}</div>
+                    </div>
+                </mat-form-field>
+
+            </mat-card-content>
+
+            <button mat-stroked-button type="submit" color="accent" class="btn-block">{{ 'Register' | translate }}</button>
+
+            <div *ngIf="errorMessage"><br><div class="alert alert-danger error-message">{{errorMessage}}</div></div>
+        </form>
+    </mat-card>
+</div>

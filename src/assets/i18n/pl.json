@@ -1,0 +1,18 @@
+{
+    "Hello": "Witaj",
+    "Username": "Nazwa użytkownika",
+    "Email": "E-mail",
+    "Password": "Hasło",
+    "Login": "Zaloguj się",
+    "Register": "Zarejestruj",
+    "Logout" : "Wyloguj",
+    "Files" : "Pliki",
+    "CreateFolder" : "Nowy folder",
+    "CreateFile" : "Dodaj plik",
+    "Download": "Pobierz",
+    "Delete": "Usuń",
+    
+    "Valid_invalidUsername" : "Nazwa użytkownika musi mieć minimum 3 znaki.",
+    "Valid_invalidEmail" : "Nieprawidłowy adres email.",
+    "Valid_invalidPassword" : "Hasło musi mieć minimum 8 znaków."
+}

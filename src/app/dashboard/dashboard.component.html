@@ -1,0 +1,14 @@
+<div class="panel-board">
+  <mat-card style="min-height: 300px;">
+      <file-explorer 
+        [fileElements]="fileElements | async" 
+        [path]="currentPath" 
+        [canNavigateUp]="canNavigateUp" 
+        (folderAdded)="addFolder($event)"
+        (elementRemoved)="removeElement($event)" 
+        (navigatedDown)="navigateToFolder($event)" 
+        (navigatedUp)="navigateUp()" 
+        (elementRenamed)="renameElement($event)"
+        (elementMoved)="moveElement($event)">
+      </file-explorer>
+    </mat-card>

@@ -1,0 +1,54 @@
+<mat-toolbar>
+    <mat-icon *ngIf="canNavigateUp" class="pointer" (click)="navigateUp()">arrow_back</mat-icon>
+    <span style="margin-left: 8px">{{ 'Files' | translate }}</span>
+    <span class="spacer"></span>
+    <button mat-button (click)="openNewFolderDialog()"><mat-icon>create_new_folder</mat-icon> {{ 'CreateFolder' | translate }}</button>
+    <button [disabled]="isInProgress" mat-button (click)="selectFile();"><mat-icon>add_circle</mat-icon> {{ 'CreateFile' | translate }}</button>
+    <input type="file" id="selectNewFile" style="display: none;" (change)="uploadNewFile($event)"/>
+    <span style="margin-left: 12px;" *ngIf="currentFileUpload && percentage<100">{{("0" + percentage).slice(-2)}}%</span>
+       
+  </mat-toolbar>
+  
+  <div class="container" style="margin-left: 10px; margin-right: 10px;" fxFlex fxLayout="row" fxLayoutAlign="space-between stretch">
+    <div class="content" fxFlex fxLayout="row">
+      <mat-grid-list cols="8" rowHeight="100px" fxFlex>
+        <mat-grid-tile *ngFor="let element of fileElements" class=file-or-folder>
+          <span [matMenuTriggerFor]="rootMenu" [matMenuTriggerData]="{element: element}" #menuTrigger="matMenuTrigger"></span>
+          <div fxLayout="column" fxLayoutAlign="space-between center" (click)="navigate(element)" (contextmenu)="openMenu($event, menuTrigger)">
+            <mat-icon color="primary" class="file-or-folder-icon pointer" *ngIf="element.isFolder">folder</mat-icon>
+            <mat-icon color="primary" class="file-or-folder-icon pointer" *ngIf="!element.isFolder">insert_drive_file</mat-icon>
+            <span class="fileElementName">{{element.name}}</span>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+  
+  <mat-menu #rootMenu="matMenu" [overlapTrigger]="false">
+    <ng-template matMenuContent let-element="element">
+      <button *ngIf="!element.isFolder" mat-menu-item (click)="downloadFile(element)">
+          <mat-icon>cloud_download</mat-icon>
+          <span>{{ 'Download' | translate }}</span>
+        </button>
+      <!-- <button mat-menu-item [matMenuTriggerFor]="moveToMenu" [matMenuTriggerData]="{self: element}">
+        <mat-icon>open_with</mat-icon>
+        <span>Move To</span>
+      </button> -->
+      <!-- <button mat-menu-item (click)="openRenameDialog(element)">
+        <mat-icon>edit</mat-icon>
+        <span>Rename</span>
+      </button> -->
+      <button mat-menu-item (click)="deleteElement(element)">
+        <mat-icon>delete</mat-icon>
+        <span>{{ 'Delete' | translate }}</span>
+      </button>
+    </ng-template>
+  </mat-menu>
+  
+  <!-- <mat-menu #moveToMenu="matMenu">
+    <ng-template matMenuContent let-self="self">
+      <ng-container *ngFor="let element of fileElements">
+        <button *ngIf="element.isFolder && element.id !== self.id" mat-menu-item (click)="moveElement(self, element)">{{element.name}}</button>
+      </ng-container>
+    </ng-template>
+  </mat-menu> -->
